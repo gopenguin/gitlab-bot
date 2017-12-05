@@ -3,7 +3,8 @@ How to setup the server running gitlab bot
 
 Get a up to date version of ubuntu.
 
-Install docker:
+Install docker
+--------------
 
 ```shell
 sudo apt-get install \
@@ -20,3 +21,15 @@ sudo apt-get update
 sudo apt-get install docker-ce
 ```
 
+Start the project
+-----------------
+
+Build the image using
+```shell
+docker build -t gitlab-bot:v1 .
+```
+
+Run the app using
+```shell
+docker run -it --rm -p 80:3000 gitlab-bot:v1
+```
