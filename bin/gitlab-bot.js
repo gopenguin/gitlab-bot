@@ -14,4 +14,5 @@ const bot = createBot({
     port: program.port
 });
 
+bot.setup();
 bot.start();
