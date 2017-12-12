@@ -1,17 +1,23 @@
 #!/usr/bin/env node
 
+require('dotenv').config();
+
 const program = require('commander');
 
 program
     .option('-p, --port <n>', 'Port to start the server on', process.env.PORT || 3000)
     .option('-w, --webhook-path <path>', 'URL path which receives webhooks. Ex: /webhook', process.env.WEBHOOK_PATH)
     .option('-s, --secret <secret>', 'Webhook secret of the GitLab App', process.env.WEBHOOK_SECRET)
+    .option('--usertoken <usertoken>', 'Usertoken of the Gitlab Robot User', process.env.GITLAB_USERTOKEN)
     .parse(process.argv);
 
 const createBot = require('../');
 
 const bot = createBot({
-    port: program.port
+    port: program.port,
+    webhookPath: program.webhookPath,
+    secret: program.secret,
+    usertoken: program.usertoken
 });
 
 bot.setup();
