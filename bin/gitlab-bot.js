@@ -2,6 +2,8 @@
 
 require('dotenv').config();
 
+const pkgConf = require('pkg-conf');
+
 const program = require('commander');
 
 program
@@ -22,5 +24,7 @@ const bot = createBot({
     url: program.url
 });
 
-bot.setup();
-bot.start();
+pkgConf('gitlab-bot').then(pkg => {
+    bot.setup(program.args.concat(pkg.plugins || []));
+    bot.start();
+});
