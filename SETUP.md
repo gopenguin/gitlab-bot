@@ -1,7 +1,7 @@
 How to setup the server running gitlab bot
 ==========================================
 
-Get a up to date version of ubuntu.
+Get a up to date version of ubuntu or any other system being able to host docker as this project uses docker to provide an up to date node.js environment.
 
 Install docker
 --------------
@@ -24,12 +24,15 @@ sudo apt-get install docker-ce
 Start the project
 -----------------
 
-Build the image using
+Build the docker image and run it with port forwarding:
 ```shell
-docker build -t gitlab-bot:v1 .
+make run
 ```
 
-Run the app using
+By default the containers port 3000 will be forwarded to the host port 80. This can be changed by providing an environment variable `PORT` like `PORT=8080 make run`.
+
+Remove the built docker image:
 ```shell
-docker run -it --rm -p 80:3000 gitlab-bot:v1
+make clean
 ```
+

@@ -1,8 +1,8 @@
 # Gitlab Bot
 
-Der Gitlab Bot soll triviale Aufgaben, die bei der Projektverwaltung in Gitlab anfallen, automatisieren. Als Vorbild
-soll an dieser Stelle [ProBot](https://github.com/probot/probot) dienen, der ein modulares System bereitstellt, mit dem
-Plugins zur automatisierung von Aufgaben auf Github entwickelt werden können.
+The purpose of the gitlab bot is to automate trivial tasks in project management using gitlab. This project is heavily inspired by [ProBot](https://github.com/probot/probot).
+
+At the hart of this bot is a plugin system. This can be used to register actions which should be triggered by certain events e.g. creating an issue.
 
 ## Install
 
@@ -12,10 +12,13 @@ $ npm install --save gitlab-bot my-awesome-gitlab-bot-plugin and-another-one
 
 ## Usage
 
+After installing the plugins and gitlab bot itself, you need to tell the bot which plugins to load via the package.json.
+
 ```json
 {
 	"name": "my-gitlab-bot-project",
 	"version": "1.0.0",
+	...
 	"gitlab-bot": {
 		"plugins": [
 		    "my-awesome-gitlab-bot-plugin",
@@ -25,7 +28,11 @@ $ npm install --save gitlab-bot my-awesome-gitlab-bot-plugin and-another-one
 }
 ```
 
-## Implementierung
+## Development
+
+For a development evnironment see [SETUP.md](SETUP.md).
+
+## Implementierung --- Just some notes of the developers
 
 [x] vorbereiten der Infrastruktur: Eintragen des Servers für Events im Gitlab; minimaler Webserver zum Testen, ob die Requests ankommen
 
